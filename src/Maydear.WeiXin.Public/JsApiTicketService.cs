@@ -9,32 +9,23 @@ using System.Threading.Tasks;
 
 namespace Maydear.WeiXin.Public
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class JsApiTicketService
     {
         private WeiXinClient _weiXinClient;
 
         private IStore _store;
         private WxPublic _wxPublic;
-        private IServiceCollection _serviceDescriptors;
         private AccessTokenService _accessTokenService;
 
-        public JsApiTicketService(IStore store, IOptions<WxPublic> wxPublic, IServiceCollection collection, AccessTokenService accessTokenService)
+        public JsApiTicketService(IStore store, IOptions<WxPublic> wxPublic, WeiXinClient weiXinClient, AccessTokenService accessTokenService)
         {
             _store = store;
-            _serviceDescriptors = collection;
+            _weiXinClient = weiXinClient;
             _wxPublic = wxPublic.Value;
             _accessTokenService = accessTokenService;
-        }
-
-        private WeiXinClient GetWeiXinClient()
-        {
-            if (_weiXinClient == null)
-            {
-                var provider = _serviceDescriptors.BuildServiceProvider();
-                _weiXinClient = provider.GetRequiredService<WeiXinClient>();
-            }
-
-            return _weiXinClient;
         }
 
         public string GetJsApiTicket()
@@ -59,7 +50,7 @@ namespace Maydear.WeiXin.Public
             if (string.IsNullOrEmpty(accessToken))
                 throw new ArgumentNullException("accessToken is null");
 
-            var cacheTicket = await GetWeiXinClient().GetJsApiTicketAsync(accessToken);
+            var cacheTicket = await _weiXinClient.GetJsApiTicketAsync(accessToken);
             if (cacheTicket == null)
                 throw new ArgumentNullException("cacheTicket is null");
             await _store.RenewAsync(Key, cacheTicket, cacheTicket.ExpiresIn);

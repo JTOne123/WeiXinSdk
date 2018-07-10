@@ -14,6 +14,11 @@ namespace Maydear.WeiXin.Public
         private JsApiTicketService _jsApiTicketService;
         private WxPublic _wxPublic;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="jsApiTicketService"></param>
+        /// <param name="wxPublic"></param>
         public WxJsConfigService(JsApiTicketService jsApiTicketService, IOptions<WxPublic> wxPublic)
         {
             _jsApiTicketService = jsApiTicketService;

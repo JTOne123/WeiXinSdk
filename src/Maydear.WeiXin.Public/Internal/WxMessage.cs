@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Maydear.WeiXin.Public.Internal
 {
-    internal class WxMessage
+    public class WxMessage
     {
         /// <summary>
         /// 错误码

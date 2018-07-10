@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Maydear.WeiXin.Public.Internal
 {
-    internal class WeiXinClient
+    public class WeiXinClient
     {
         public WeiXinClient(HttpClient httpClient)
         {

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace Maydear.WeiXin.Public.Internal
 {
-    internal class JsApiTicketMessage : WxMessage
+    public class JsApiTicketMessage : WxMessage
     {
         /// <summary>
         /// 微信JS接口的临时票据

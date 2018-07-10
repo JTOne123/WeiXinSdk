@@ -8,7 +8,7 @@ namespace Maydear.WeiXin.Public.Internal
     /// <summary>
     /// 拉取用户信息
     /// </summary>
-    internal class UserInfoMessage : WxMessage
+    public class UserInfoMessage : WxMessage
     {
         /// <summary>
         /// 用户的唯一标识

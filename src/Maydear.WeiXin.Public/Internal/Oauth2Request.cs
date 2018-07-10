@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Maydear.WeiXin.Public.Internal
 {
-    internal class Oauth2Request
+    public class Oauth2Request
     {
         /// <summary>
         /// 获取access_token填写

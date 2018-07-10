@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Maydear.WeiXin.Public.Internal
 {
-    internal class AccessTokenMessage : WxMessage
+    public class AccessTokenMessage : WxMessage
     {
         /// <summary>
         /// 接口调用凭据

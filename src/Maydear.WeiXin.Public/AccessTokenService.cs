@@ -12,27 +12,14 @@ namespace Maydear.WeiXin.Public
     public class AccessTokenService
     {
         private WeiXinClient _weiXinClient;
-
         private IStore _store;
         private WxPublic _wxPublic;
-        private IServiceCollection _serviceDescriptors;
 
-        public AccessTokenService(IStore store, IOptions<WxPublic> wxPublic, IServiceCollection collection)
+        public AccessTokenService(IStore store, IOptions<WxPublic> wxPublic, WeiXinClient weiXinClient)
         {
             _store = store;
-            _serviceDescriptors = collection;
+            _weiXinClient = weiXinClient;
             _wxPublic = wxPublic.Value;
-        }
-
-        private WeiXinClient GetWeiXinClient()
-        {
-            if (_weiXinClient == null)
-            {
-                var provider = _serviceDescriptors.BuildServiceProvider();
-                _weiXinClient = provider.GetRequiredService<WeiXinClient>();
-            }
-
-            return _weiXinClient;
         }
 
         public string GetAccessToken()
@@ -56,7 +43,7 @@ namespace Maydear.WeiXin.Public
             AccessTokenMessage cacheAccessToken = (AccessTokenMessage)await _store.RetrieveAsync(Key);
             if (cacheAccessToken == null)
             {
-                cacheAccessToken = await GetWeiXinClient().GetAccessTokenAsync(new Internal.AccessTokenRequest() { AppId = appid, AppSecret = appSecret });
+                cacheAccessToken = await _weiXinClient.GetAccessTokenAsync(new Internal.AccessTokenRequest() { AppId = appid, AppSecret = appSecret });
                 if (cacheAccessToken == null || cacheAccessToken.ErrCode != 0)
                     throw new ArgumentNullException(cacheAccessToken.ErrMsg);
                 await _store.RenewAsync(Key, cacheAccessToken, cacheAccessToken.ExpiresIn);

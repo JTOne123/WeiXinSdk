@@ -25,7 +25,10 @@ namespace Maydear.WeiXin.Public.Internal
         /// <returns></returns>
         public async Task<AccessTokenMessage> GetAccessTokenAsync(AccessTokenRequest request)
         {
-            return await HttpClient.GetAsync<AccessTokenMessage>(string.Format("/cgi-bin/token?{0}", request.ToQueryString()));
+            var message = await HttpClient.GetAsync<AccessTokenMessage>(string.Format("/cgi-bin/token?{0}", request.ToQueryString()));
+            if (message.ErrCode != 0)
+                throw new WxException(message.ErrCode, message.ErrMsg);
+            return message;
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace Maydear.WeiXin.Public.Internal
 
             var message = await HttpClient.GetAsync<JsApiTicketMessage>($"/cgi-bin/ticket/getticket?access_token={accessToken}&type=jsapi");
 
-            if (message.ErrCode > 0)
+            if (message.ErrCode != 0)
                 throw new WxException(message.ErrCode, message.ErrMsg);
             return message;
         }
@@ -51,11 +54,11 @@ namespace Maydear.WeiXin.Public.Internal
         public async Task<JsApiTicketMessage> GetJsApiTicketAsync(AccessTokenRequest request)
         {
             AccessTokenMessage accessTokenMessage = await GetAccessTokenAsync(request);
-            if (accessTokenMessage.ErrCode > 0)
+            if (accessTokenMessage.ErrCode != 0)
                 throw new WxException(accessTokenMessage.ErrCode, accessTokenMessage.ErrMsg);
             var accessToken = accessTokenMessage.AccessToken;
             var ticketMessage = await HttpClient.GetAsync<JsApiTicketMessage>($"/cgi-bin/ticket/getticket?access_token={accessToken}&type=jsapi");
-            if (ticketMessage.ErrCode > 0)
+            if (ticketMessage.ErrCode != 0)
                 throw new WxException(ticketMessage.ErrCode, ticketMessage.ErrMsg);
 
             return ticketMessage;
@@ -64,12 +67,12 @@ namespace Maydear.WeiXin.Public.Internal
         /// <summary>
         /// 获取开放授权的AccessToken
         /// </summary>
-        /// <param name="accessToken"></param>
+        /// <param name="request"></param>
         /// <returns></returns>
         public async Task<Oauth2Message> GetOauth2AccessTokenAsync(Oauth2Request request)
         {
             var message = await HttpClient.GetAsync<Oauth2Message>($"/sns/oauth2/access_token?{request.ToQueryString()}");
-            if (message.ErrCode > 0)
+            if (message.ErrCode != 0)
                 throw new WxException(message.ErrCode, message.ErrMsg);
             return message;
         }
@@ -82,7 +85,7 @@ namespace Maydear.WeiXin.Public.Internal
         public async Task<Oauth2Message> RefreshOauth2AccessTokenAsync(Oauth2Refresh request)
         {
             var message = await HttpClient.GetAsync<Oauth2Message>($"/sns/oauth2/refresh_token?{request.ToQueryString()}");
-            if (message.ErrCode > 0)
+            if (message.ErrCode != 0)
                 throw new WxException(message.ErrCode, message.ErrMsg);
             return message;
 
@@ -98,7 +101,7 @@ namespace Maydear.WeiXin.Public.Internal
         public async Task<UserInfoMessage> GetUserInfoAsync(string accessToken, string openid)
         {
             var message = await HttpClient.GetAsync<UserInfoMessage>($"/sns/userinfo?access_token={accessToken}&openid={openid}&lang=zh_CN");
-            if (message.ErrCode > 0)
+            if (message.ErrCode != 0)
                 throw new WxException(message.ErrCode, message.ErrMsg);
             return message;
         }

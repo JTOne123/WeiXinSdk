@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Maydear.WeiXin.Public.Internal
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Oauth2Message : WxMessage
     {
         /// <summary>

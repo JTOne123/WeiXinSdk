@@ -17,10 +17,10 @@ namespace Maydear.WeiXin.Public
         private WeiXinClient _weiXinClient;
 
         private IStore _store;
-        private WxPublic _wxPublic;
+        private WxPublicOptions _wxPublic;
         private AccessTokenService _accessTokenService;
 
-        public JsApiTicketService(IStore store, IOptions<WxPublic> wxPublic, WeiXinClient weiXinClient, AccessTokenService accessTokenService)
+        public JsApiTicketService(IStore store, IOptions<WxPublicOptions> wxPublic, WeiXinClient weiXinClient, AccessTokenService accessTokenService)
         {
             _store = store;
             _weiXinClient = weiXinClient;
@@ -45,6 +45,12 @@ namespace Maydear.WeiXin.Public
 
         public async Task<string> GetJsApiTicketAsync(string appid, string appSecret)
         {
+            if (string.IsNullOrEmpty(appid))
+                throw new ArgumentNullException("GetJsApiTicketAsync appId");
+
+            if (string.IsNullOrEmpty(appSecret))
+                throw new ArgumentNullException("GetJsApiTicketAsync appSecret");
+
             string Key = $"JsApiTicket-{appid}";
             string accessToken = await _accessTokenService.GetAccessTokenAsync(appid, appSecret);
             if (string.IsNullOrEmpty(accessToken))

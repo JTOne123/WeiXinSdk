@@ -12,14 +12,14 @@ namespace Maydear.WeiXin.Public
     public class WxJsConfigService
     {
         private JsApiTicketService _jsApiTicketService;
-        private WxPublic _wxPublic;
+        private WxPublicOptions _wxPublic;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="jsApiTicketService"></param>
         /// <param name="wxPublic"></param>
-        public WxJsConfigService(JsApiTicketService jsApiTicketService, IOptions<WxPublic> wxPublic)
+        public WxJsConfigService(JsApiTicketService jsApiTicketService, IOptions<WxPublicOptions> wxPublic)
         {
             _jsApiTicketService = jsApiTicketService;
             _wxPublic = wxPublic.Value;
@@ -32,6 +32,15 @@ namespace Maydear.WeiXin.Public
 
         public async Task<WxJsConfig> GetConfigAsync(string appId, string appSecret, string url)
         {
+            if (string.IsNullOrEmpty(appId))
+                throw new ArgumentNullException("GetConfigAsync appId");
+
+            if (string.IsNullOrEmpty(appSecret))
+                throw new ArgumentNullException("GetConfigAsync appSecret");
+
+            if (string.IsNullOrEmpty(url))
+                throw new ArgumentNullException("GetConfigAsync url");
+
             var ticket = await _jsApiTicketService.GetJsApiTicketAsync(appId, appSecret);
 
             var jsConfig = new WxJsConfig()

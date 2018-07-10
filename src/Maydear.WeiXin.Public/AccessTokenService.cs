@@ -13,9 +13,9 @@ namespace Maydear.WeiXin.Public
     {
         private WeiXinClient _weiXinClient;
         private IStore _store;
-        private WxPublic _wxPublic;
+        private WxPublicOptions _wxPublic;
 
-        public AccessTokenService(IStore store, IOptions<WxPublic> wxPublic, WeiXinClient weiXinClient)
+        public AccessTokenService(IStore store, IOptions<WxPublicOptions> wxPublic, WeiXinClient weiXinClient)
         {
             _store = store;
             _weiXinClient = weiXinClient;
@@ -39,6 +39,12 @@ namespace Maydear.WeiXin.Public
 
         public async Task<string> GetAccessTokenAsync(string appid, string appSecret)
         {
+            if (string.IsNullOrEmpty(appid))
+                throw new ArgumentNullException("GetAccessTokenAsync appId");
+
+            if (string.IsNullOrEmpty(appSecret))
+                throw new ArgumentNullException("GetAccessTokenAsync appSecret");
+
             string Key = $"AccessToken-{appid}";
             AccessTokenMessage cacheAccessToken = (AccessTokenMessage)await _store.RetrieveAsync(Key);
             if (cacheAccessToken == null)

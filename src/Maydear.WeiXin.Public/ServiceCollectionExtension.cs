@@ -1,4 +1,6 @@
 ﻿using Maydear.WeiXin.Public;
+using Maydear.WeiXin.Public.Infrastructure;
+using Maydear.WeiXin.Public.Internal;
 using Microsoft.Extensions.Configuration;
 using Polly;
 using System;
@@ -31,6 +33,11 @@ namespace Microsoft.Extensions.DependencyInjection
             services.Configure(setupAction);
             services.AddMemoryCache();
             services.AddWeiXinClient();
+            services.AddSingleton<IStore, DefaultMemoryStore>();
+            services.AddSingleton<AccessTokenService>();
+            services.AddSingleton<JsApiTicketService>();
+            services.AddSingleton<WxOauthService>();
+            services.AddSingleton<WxJsConfigService>();
             return services;
         }
 

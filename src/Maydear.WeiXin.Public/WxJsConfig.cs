@@ -17,7 +17,7 @@ namespace Maydear.WeiXin.Public
         /// <summary>
         /// 生成签名的时间戳
         /// </summary>
-        public string Timestamp { get; set; }
+        public long Timestamp { get; set; }
 
         /// <summary>
         /// 生成签名的随机串

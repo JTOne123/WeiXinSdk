@@ -34,6 +34,4 @@ namespace Maydear.WeiXin.Public
             throw null;
         }
     }
-    {
-    }
 }

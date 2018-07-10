@@ -18,5 +18,6 @@ namespace Maydear.WeiXin.Public.Internal
         /// </summary>
         [JsonProperty("expires_in")]
         public long ExpiresIn { get; set; }
+
     }
 }

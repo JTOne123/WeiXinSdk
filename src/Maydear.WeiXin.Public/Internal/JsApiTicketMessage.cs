@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Maydear.WeiXin.Public.Internal;
 using Newtonsoft.Json;
 
-namespace Maydear.WeiXin.Public
+namespace Maydear.WeiXin.Public.Internal
 {
     internal class JsApiTicketMessage : WxMessage
     {

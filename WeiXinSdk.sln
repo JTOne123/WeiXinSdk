@@ -10,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maydear.WeiXin.Public", "src\Maydear.WeiXin.Public\Maydear.WeiXin.Public.csproj", "{15D353E1-C991-4637-ADCE-D790060A9E07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maydear.WeiXin.Public", "src\Maydear.WeiXin.Public\Maydear.WeiXin.Public.csproj", "{15D353E1-C991-4637-ADCE-D790060A9E07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maydear.WeiXin.Payment", "src\Maydear.WeiXin.Payment\Maydear.WeiXin.Payment.csproj", "{46922925-0155-4FBD-89A2-C13CD8447513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +24,10 @@ Global
 		{15D353E1-C991-4637-ADCE-D790060A9E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15D353E1-C991-4637-ADCE-D790060A9E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15D353E1-C991-4637-ADCE-D790060A9E07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46922925-0155-4FBD-89A2-C13CD8447513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46922925-0155-4FBD-89A2-C13CD8447513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46922925-0155-4FBD-89A2-C13CD8447513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46922925-0155-4FBD-89A2-C13CD8447513}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

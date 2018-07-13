@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Maydear.WeiXin.Public
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WxUserInfo
     {
         /// <summary>

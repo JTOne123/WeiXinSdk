@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Maydear.WeiXin.Public.Internal
 {
-    public class WeiXinClient
+    public class WeiXinPublicClient
     {
-        public WeiXinClient(HttpClient httpClient)
+        public WeiXinPublicClient(HttpClient httpClient)
         {
             HttpClient = httpClient;
         }

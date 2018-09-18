@@ -20,6 +20,20 @@
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Release|netstandard2.0'">
     <DocumentationFile>bin\Release\netstandard2.0\Maydear.WeiXin.Public.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Common\CommonHelper.cs" Link="CommonHelper.cs" />
+    <Compile Include="..\Common\HttpClientExtension.cs" Link="HttpClientExtension.cs" />
+    <Compile Include="..\Common\HttpContentExtension.cs" Link="HttpContentExtension.cs" />
+    <Compile Include="..\Common\JsonKeyValuePair.cs" Link="JsonKeyValuePair.cs" />
+    <Compile Include="..\Common\RetryHandler.cs" Link="RetryHandler.cs" />
+    <Compile Include="..\Common\TaskHelper.cs" Link="TaskHelper.cs" />
+    <Compile Include="..\Common\TypeExtension.cs" Link="TypeExtension.cs" />
+    <Compile Include="..\Common\XDocumentExtension.cs" Link="XDocumentExtension.cs" />
+    <Compile Include="..\Common\XElementExtension.cs" Link="XElementExtension.cs" />
+    <Compile Include="..\Common\XmlDocumentExtension.cs" Link="XmlDocumentExtension.cs" />
+    <Compile Include="..\Common\XmlNodeNameAttribute.cs" Link="XmlNodeNameAttribute.cs" />
+  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.6" />

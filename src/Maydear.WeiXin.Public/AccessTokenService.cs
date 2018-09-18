@@ -11,11 +11,11 @@ namespace Maydear.WeiXin.Public
 {
     public class AccessTokenService
     {
-        private WeiXinClient _weiXinClient;
+        private WeiXinPublicClient _weiXinClient;
         private IStore _store;
         private WxPublicOptions _wxPublic;
 
-        public AccessTokenService(IStore store, IOptions<WxPublicOptions> wxPublic, WeiXinClient weiXinClient)
+        public AccessTokenService(IStore store, IOptions<WxPublicOptions> wxPublic, WeiXinPublicClient weiXinClient)
         {
             _store = store;
             _weiXinClient = weiXinClient;

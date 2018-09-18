@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Maydear.WeiXin.Public
+namespace Maydear.WeiXin
 {
     internal class RetryHandler : DelegatingHandler
     {

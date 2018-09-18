@@ -2,7 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Maydear.WeiXin.Public;
+using Maydear.WeiXin;
+using System.Xml.Linq;
 
 namespace System.Net.Http
 {
@@ -16,9 +17,21 @@ namespace System.Net.Http
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static HttpContent ToTextPlainTypeHttpContent(this object data)
+        public static HttpContent ToTextPlainStringContent(this object data)
         {
             return new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "text/plain");
+        }
+
+        /// <summary>
+        /// 转换为格式json对象HttpContent，mime：text/plain
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static HttpContent ToTextXmlStringContent(this object data)
+        {
+            XElement xRequest = new XElement("xml");
+            var xmlString = xRequest.BuildChildElement(data.GetType(), (info) => info.GetValue(data, null)).ToXmlString();
+            return new StringContent(xmlString, Encoding.UTF8, "text/xml");
         }
 
         /// <summary>
@@ -26,7 +39,7 @@ namespace System.Net.Http
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static HttpContent ToJsonTypeHttpContent(this object data)
+        public static HttpContent ToJsonTypeStringContent(this object data)
         {
             return new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
         }

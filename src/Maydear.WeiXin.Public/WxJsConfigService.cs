@@ -49,7 +49,7 @@ namespace Maydear.WeiXin.Public
                 NonceStr = CommonHelper.GetNonceStr(),
                 Timestamp = CommonHelper.GetTimestamp()
             };
-            jsConfig.Signature = CommonHelper.BuildSignature(ticket, jsConfig.NonceStr, jsConfig.Timestamp, url);
+            jsConfig.Signature = SignatureHelper.BuildTicketSignature(ticket, jsConfig.NonceStr, jsConfig.Timestamp, url);
 
             return jsConfig;
         }

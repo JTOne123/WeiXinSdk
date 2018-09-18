@@ -27,7 +27,7 @@ using System.Threading.Tasks;
  *        1		    |	Kelvin		|2014-09-22 15:20:00	|	创建文件
  ****************************************************************************************/
 
-namespace Maydear.WeiXin.Public
+namespace System.Threading.Tasks
 {
     /// <summary>
     /// 异步助手类

@@ -14,13 +14,13 @@ namespace Maydear.WeiXin.Public
     /// </summary>
     public class JsApiTicketService
     {
-        private WeiXinClient _weiXinClient;
+        private WeiXinPublicClient _weiXinClient;
 
         private IStore _store;
         private WxPublicOptions _wxPublic;
         private AccessTokenService _accessTokenService;
 
-        public JsApiTicketService(IStore store, IOptions<WxPublicOptions> wxPublic, WeiXinClient weiXinClient, AccessTokenService accessTokenService)
+        public JsApiTicketService(IStore store, IOptions<WxPublicOptions> wxPublic, WeiXinPublicClient weiXinClient, AccessTokenService accessTokenService)
         {
             _store = store;
             _weiXinClient = weiXinClient;

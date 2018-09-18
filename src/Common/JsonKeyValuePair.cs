@@ -5,7 +5,7 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Text;
 
-namespace Maydear.WeiXin.Public
+namespace Maydear.WeiXin
 {
     /// <summary>
     /// 

@@ -13,7 +13,7 @@ namespace Maydear.WeiXin.Public
     /// </summary>
     public class WxOauthService
     {
-        private WeiXinClient _weiXinClient;
+        private WeiXinPublicClient _weiXinClient;
         private IStore _store;
         private WxPublicOptions _wxPublic;
 
@@ -23,7 +23,7 @@ namespace Maydear.WeiXin.Public
         /// <param name="store"></param>
         /// <param name="wxPublic"></param>
         /// <param name="weiXinClient"></param>
-        public WxOauthService(IStore store, IOptions<WxPublicOptions> wxPublic, WeiXinClient weiXinClient)
+        public WxOauthService(IStore store, IOptions<WxPublicOptions> wxPublic, WeiXinPublicClient weiXinClient)
         {
             _store = store;
             _weiXinClient = weiXinClient;
